@@ -1,3 +1,10 @@
+/*
+ChannelActions Bot
+Telegram: @ChannelActionsBot
+
+(c) Aditya, https://xditya.me
+*/
+
 import config from "./env.ts";
 import { get_perms } from "./helpers.ts";
 import {
@@ -29,7 +36,7 @@ import {
 import { I18n, I18nFlavor } from "i18n";
 
 import { MongoDBAdapter } from "mongo_sessions";
-import { cron } from "deno_cron";
+// import { cron } from "deno_cron";
 
 interface SessionData {
   __language_code?: string;
@@ -76,7 +83,7 @@ for (const owner of config.OWNERS.split(" ")) {
   owners.push(Number(owner));
 }
 
-const broadcasts = new Map();
+// const broadcasts = new Map();
 
 bot.callbackQuery(/set_locale_(.*)/, async (ctx) => {
   const i = ctx.match?.[0];
@@ -103,7 +110,7 @@ bot.callbackQuery("helper", async (ctx) => {
     ctx.t("help") +
       "\n\nTo approve members who are already in waiting list, upgrade to premium for 3$ per month! Contact @I_M_R_A_S if interested.",
     {
-      reply_markup: new InlineKeyboard().text("Main Menu", "start"),
+      reply_markup: new InlineKeyboard().text("Main Menu ðŸ“­", "start"),
       parse_mode: "HTML",
     },
   );
@@ -274,7 +281,7 @@ bot.on("chat_join_request", async (ctx) => {
     }
   }
 
-  try to approve
+  // try to approve
   try {
     if (approve_or_not) {
       await bot.api.approveChatJoinRequest(update.chat.id, update.from.id);
@@ -296,7 +303,7 @@ bot.on("chat_join_request", async (ctx) => {
     update.chat.title,
   );
 
-  try to send a message
+  // try to send a message
   try {
     await bot.api.sendMessage(
       update.from.id,
@@ -350,52 +357,52 @@ bot.command("setlang", async (ctx) => {
   await ctx.reply(`Locale has been set to ${ctx.match}`);
 });
 
-bot
-  .filter((ctx) => owners.includes(ctx.from?.id ?? 0))
-  .chatType("private")
-  .command("broadcast", async (ctx) => {
-    if (ctx.message.reply_to_message == undefined) {
-      await ctx.reply("Please reply to a message!");
-      return;
-    }
-    const msg = await ctx.reply("Broadcast has been scheduled.");
-    const reply = ctx.message.reply_to_message;
+// bot
+//   .filter((ctx) => owners.includes(ctx.from?.id ?? 0))
+//   .chatType("private")
+//   .command("broadcast", async (ctx) => {
+//     if (ctx.message.reply_to_message == undefined) {
+//       await ctx.reply("Please reply to a message!");
+//       return;
+//     }
+//     const msg = await ctx.reply("Broadcast has been scheduled.");
+//     const reply = ctx.message.reply_to_message;
 
-    broadcasts.set("broadcast", reply).set("message", msg);
-  });
+//     broadcasts.set("broadcast", reply).set("message", msg);
+//   });
 
-check every 2 minutes if a broadcast exists, and if yes, do it.
-cron("*/2  * * * *", async () => {
-  console.log("Checking for Broadcasts...")
-  const msg = broadcasts.get("message");
-  const reply = broadcasts.get("broadcast");
-  if (!msg || !reply) return;
-  console.log("Running Broadcast...")
-  const users = await getUsers();
-  let err = 0;
-  broadcasts.clear();
-  await bot.api.editMessageText(
-    msg.chat.id,
-    msg.message_id,
-    `Broadcast has started.`,
-  );
-  for (const user of users) {
-    try {
-      await bot.api.copyMessage(user, reply.chat.id, reply.message_id);
-    } catch (error) {
-      if (error.error_code == 403) continue;
-      err++;
-      console.log("Error while broadcasting: ", error.message);
-      continue;
-    }
-  }
-  await bot.api.editMessageText(
-    msg.chat.id,
-    msg.message_id,
-    `Broadcast has been sent to ${users.length - err}/${users.length} users.`,
-  );
-});
+// check every 2 minutes if a broadcast exists, and if yes, do it.
+// cron("*/2  * * * *", async () => {
+//   console.log("Checking for Broadcasts...")
+//   const msg = broadcasts.get("message");
+//   const reply = broadcasts.get("broadcast");
+//   if (!msg || !reply) return;
+//   console.log("Running Broadcast...")
+//   const users = await getUsers();
+//   let err = 0;
+//   broadcasts.clear();
+//   await bot.api.editMessageText(
+//     msg.chat.id,
+//     msg.message_id,
+//     `Broadcast has started.`,
+//   );
+//   for (const user of users) {
+//     try {
+//       await bot.api.copyMessage(user, reply.chat.id, reply.message_id);
+//     } catch (error) {
+//       if (error.error_code == 403) continue;
+//       err++;
+//       console.log("Error while broadcasting: ", error.message);
+//       continue;
+//     }
+//   }
+//   await bot.api.editMessageText(
+//     msg.chat.id,
+//     msg.message_id,
+//     `Broadcast has been sent to ${users.length - err}/${users.length} users.`,
+//   );
+// });
 
 await bot.init();
 console.info(`Started Bot - @${bot.botInfo.username}`);
-console.info("\nDo join @Cyberassemble!\nBy - Power By @I_M_R_A_S.\n");
+console.info("\nDo join @cyberassemble!\nBy - @I_M_R_A_S.\n");
