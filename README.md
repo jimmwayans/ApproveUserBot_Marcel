@@ -1,7 +1,7 @@
 # ChannelActionsBot
 
 Can be found on telegram as
-[@ChannelActionsBot](https://t.me/ChannelActionsBot)!
+[@CaAutoApproveBot](https://t.me/CaAutoApproveBot)!
 
 ## Features
 
@@ -14,16 +14,15 @@ Can be found on telegram as
 ### Local Hosting
 
 ```
-git clone https://github.com/xditya/ChannelActions -b deno
+git clone https://github.com/cyberassemble/apbot -b deno
 -- Make a .env file as in .env.sample ---
 deno task start
 ```
 
 ### Deno Deploy
 
-> [Watch the video tutorial on deploying!](https://youtu.be/hjxfJtk5ZWs)
 1. Open [deno deploy](https://dash.deno.com/), create a new project.
-2. [Fork](https://github.com/xditya/ChannelActionsBot/fork) the `deno` branch of
+2. [Fork](https://github.com/cyberassemble/apbot/fork) the `deno` branch of
    this repo.
 3. Search for this repo on deno deploy, set branch as deno, set file as
    `serverless.ts`
@@ -45,9 +44,9 @@ deno task start
    
 ## Support
 
-- Telegram, [@BotzHubChat](https://t.me/BotzHubChat)
+- Telegram, [@Cyberassemble](https://t.me/+QGWFuGu8sH0wYTYy)
 
 ## Credits
 
-- [Me](https://xditya.me) for this bot.
+- [Me](https://sobkiso.xyz) for this bot.
 - [grammY](https://grammy.dev).
