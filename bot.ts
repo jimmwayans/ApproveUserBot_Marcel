@@ -1,10 +1,3 @@
-/*
-ChannelActions Bot
-Telegram: @ChannelActionsBot
-
-(c) Aditya, https://xditya.me
-*/
-
 import config from "./env.ts";
 import { get_perms } from "./helpers.ts";
 import {
@@ -108,7 +101,7 @@ bot
 bot.callbackQuery("helper", async (ctx) => {
   await ctx.editMessageText(
     ctx.t("help") +
-      "\n\nTo approve members who are already in waiting list, upgrade to premium for 3$ per month! Contact @I_M_R_A_S if interested.",
+      "\n\nTo approve members who are already in waiting list, upgrade to premium for 3$ per month! Contact @noob_xd if interested.",
     {
       reply_markup: new InlineKeyboard().text("Main Menu ðŸ“­", "start"),
       parse_mode: "HTML",
@@ -123,7 +116,7 @@ bot.callbackQuery("start", async (ctx) => {
       {
         reply_markup: new InlineKeyboard()
           .text(ctx.t("usage-help"), "helper").row()
-          .url(ctx.t("updates"), "https://t.me/+QGWFuGu8sH0wYTYy"),
+          .url(ctx.t("updates"), "https://t.me/+ALutuvGtTIY2YzBi"),
         disable_web_page_preview: true,
         parse_mode: "HTML",
       },
@@ -405,4 +398,4 @@ bot.command("setlang", async (ctx) => {
 
 await bot.init();
 console.info(`Started Bot - @${bot.botInfo.username}`);
-console.info("\nDo join @cyberassemble!\nBy - @I_M_R_A_S.\n");
+console.info("\nDo join @cyberxbd!\nBy - @noob_xd.\n");
